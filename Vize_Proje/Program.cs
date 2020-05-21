@@ -27,11 +27,11 @@ namespace Vize_Proje
                             break;
                     }
                     Console.WriteLine("---------------------------------------\nBaşka işlem yapmak istiyor musunuz ? (e-h)");
-                    cevap = Console.ReadLine();
+                    cevap = Console.ReadLine().ToLower();
                     Console.Clear();
                 } while (cevap == "e");
             }
-            catch (Exception hata)
+            catch (FormatException)
             {
                 Console.WriteLine("Lütfen örnekte ki gibi bir kullanım gerçekleştiriniz.'1' - '2'");
             }

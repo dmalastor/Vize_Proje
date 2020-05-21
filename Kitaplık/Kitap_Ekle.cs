@@ -17,34 +17,46 @@ namespace Kitaplık
         }
         public static void KitapEkle()
         {
-            int tarih;
-            Console.WriteLine("Kaç kitap eklemek istiyorsunuz ?");
-            ks = int.Parse(Console.ReadLine());
-            Kitap_Ekle[] kitapdizisi = new Kitap_Ekle[ks];
-            
-            for (int i = 0; i < ks; i++)
+            try
             {
-                Console.Write("Kitap Adını Giriniz : ");
-                Kitapadi = Console.ReadLine();
-                Console.Write("Kitap Yazarını Giriniz : ");
-                Kitapyazar = Console.ReadLine();
-                Console.Write ("Kitap Basım Yılını Giriniz : ");
-                do
+                int tarih;
+                Console.WriteLine("Kaç kitap eklemek istiyorsunuz ?");
+                ks = int.Parse(Console.ReadLine());
+                Kitap_Ekle[] kitapdizisi = new Kitap_Ekle[ks];
+
+                for (int i = 0; i < ks; i++)
                 {
-                     tarih = int.Parse(Console.ReadLine());
-                    if (tarih < 1650 || tarih > 2020)
+                    Console.Write("Kitap Adını Giriniz : ");
+                    Kitapadi = Console.ReadLine();
+                    Console.Write("Kitap Yazarını Giriniz : ");
+                    Kitapyazar = Console.ReadLine();
+                    Console.Write("Kitap Basım Yılını Giriniz : ");
+                    do
                     {
-                        Console.WriteLine("Basım Yılını 2020'den Büyük 1650'den Küçük Girmemelisiniz.");
-                        Console.Write("Kitap Basım Yılını Giriniz: ");
-                    }
-                } while (tarih < 1650 || tarih > 2020);
-                Kitaptarih = new DateTime(tarih, 1, 1);
-                Console.Write("Kitap Tur Giriniz : ");
-                Kitaptur = Console.ReadLine();
-                Kitap_Ekle kitap = new Kitap_Ekle(Kitapadi, Kitapyazar, Kitaptarih, Kitaptur);
-                kitapdizisi[i] = kitap;
-                Kitap_Yazdır.KYazdırma(kitapdizisi, i);
+                        tarih = int.Parse(Console.ReadLine());
+                        if (tarih < 1650 || tarih > 2020)
+                        {
+                            Console.WriteLine("Basım Yılını 2020'den Büyük 1650'den Küçük Girmemelisiniz.");
+                            Console.Write("Kitap Basım Yılını Giriniz: ");
+                        }
+                    } while (tarih < 1650 || tarih > 2020);
+                    Kitaptarih = new DateTime(tarih, 1, 1);
+                    Console.Write("Kitap Tur Giriniz : ");
+                    Kitaptur = Console.ReadLine();
+                    Kitap_Ekle kitap = new Kitap_Ekle(Kitapadi, Kitapyazar, Kitaptarih, Kitaptur);
+                    kitapdizisi[i] = kitap;
+                    Kitap_Yazdır.KYazdırma(kitapdizisi, i);
+                }
             }
+            catch (NullReferenceException)
+            {
+                Console.WriteLine("Null bir değer girmeyiniz.");
+            }
+            catch (Exception exc)
+            {
+                Console.WriteLine($"-----{DateTime.Now}-----Bir hata oluştu-----\n{exc.StackTrace}-----\n{exc.Message}");
+            }
+            
         }
         public string YazdırmaDizisi()
         {
