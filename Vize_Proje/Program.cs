@@ -13,18 +13,18 @@ namespace Vize_Proje
                 do
                 {
                     Console.WriteLine("Kitap Eklemek için ' 1 ' Kitap Listesini Görmek İçin ' 2 ' Yazınız.");
-                    char ch =char.Parse(Console.ReadLine());
-                    switch (ch)
+                    char secenek =char.Parse(Console.ReadLine());
+                    if (secenek=='1')
                     {
-                        case '1':
-                            Kitap_Ekle.KitapEkle();
-                            break;
-                        case '2':
-                            Kitap_Yazdır.ListeyiGöster();
-                            break;
-                        default:
-                            Console.WriteLine("Menüde sadece 2 seçenek bulunmaktadır , 1 veya 2 seçeneğini kullanınız.");
-                            break;
+                        Kitap_Ekle.KitapEkle();
+                    }
+                    else if (secenek=='2')
+                    {
+                        Kitap_Yazdır.ListeyiGöster();
+                    }
+                    else
+                    {
+                        Console.WriteLine("Lüften işlem için 1 veya 2 yazınız.");
                     }
                     Console.WriteLine("---------------------------------------\nBaşka işlem yapmak istiyor musunuz ? (e-h)");
                     cevap = Console.ReadLine().ToLower();
