@@ -7,11 +7,14 @@ namespace Vize_Proje
     {
         static void Main(string[] args)
         {
+            char cevap;
             try
             {
-                string cevap = "";
+                
+                
                 do
                 {
+                    
                     Console.WriteLine("Kitap Eklemek için ' 1 ' Kitap Listesini Görmek İçin ' 2 ' Yazınız.");
                     char secenek =char.Parse(Console.ReadLine());
                     if (secenek=='1')
@@ -27,9 +30,9 @@ namespace Vize_Proje
                         Console.WriteLine("Lüften işlem için 1 veya 2 yazınız.");
                     }
                     Console.WriteLine("---------------------------------------\nBaşka işlem yapmak istiyor musunuz ? (e-h)");
-                    cevap = Console.ReadLine().ToLower();
+                    cevap =char.Parse(Console.ReadLine().ToLower());
                     Console.Clear();
-                } while (cevap == "e");
+                } while (cevap == 'e');
             }
             catch (FormatException)
             {
